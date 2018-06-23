@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(hw1)
+project(hw1 VERSION 0.0.1)
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+
+configure_file(version.h.in version.h)
 
 add_executable(hw1 main.cpp hello.cpp)
 
