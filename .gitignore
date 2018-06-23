@@ -70,4 +70,10 @@ Thumbs.db
 *.dll
 *.exe
 
-
+*.deb
+*.cmake
+version.h
+install_manifest.txt
+CMakeCache.txt
+CMakeFiles/
+_CPack_Packages/

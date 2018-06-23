@@ -21,6 +21,8 @@ int main(int argc, char* argv[])
     else
     {
         std::cout << "Wrong arguments. See readme for details" << std::endl;
+
+        return 1;
     }
 }
 
