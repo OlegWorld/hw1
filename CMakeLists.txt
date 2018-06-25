@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(hw1 VERSION 0.1.1)
+project(hw1 VERSION 0.1.$ENV{TRAVIS_BUILD_NUMBER})
 #$ENV{TRAVIS_BUILD_NUMBER}
 
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+#find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 find_package(GTest REQUIRED)
 
 include_directories(${GTEST_INCLUDE_DIRS})
@@ -22,10 +22,10 @@ set_target_properties(hw1 PROPERTIES
 
 set_target_properties(hw1_test PROPERTIES
     COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-    INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+    INCLUDE_DIRECTORIES ${GTEST_INCLUDE_DIRS}
 )
 
-target_link_libraries(hw1_test ${Boost_LIBRARIES})
+target_link_libraries(hw1_test ${GTest_LIBRARIES})
 
 install(TARGETS hw1 RUNTIME DESTINATION bin)
 
