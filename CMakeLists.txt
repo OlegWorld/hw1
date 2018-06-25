@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(hw1 VERSION 0.1.$ENV{TRAVIS_BUILD_NUMBER})
+project(hw1 VERSION 0.1.1)
+#$ENV{TRAVIS_BUILD_NUMBER}
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+find_package(GTest REQUIRED)
+
+include_directories(${GTEST_INCLUDE_DIRS})
 
 configure_file(version.h.in version.h)
 

@@ -1,6 +1,12 @@
 language: cpp
 before_script:
+- sudo apt-get update -qq
 - sudo apt-get install libboost-test-dev -y
+- cd /usr/src//gtest
+- sudo env "PATH=$PATH" cmake CMakeLists.txt
+- sudo make
+- sudo cp *.a /usr/lib
+- cd "${TRAVIS_BUILD_DIR}"
 script:
 - cmake .
 - cmake --build .
@@ -10,4 +16,4 @@ deploy:
     provider: script
     skip_cleanup: true
     skript:
-    - curl -T hw1-0.1.$TRAVIS_BUILD_NUMBER-Linux.deb -OlegWorld:$BINTRAY_API_KEY "https://api.bintray.com/content/olegworld/Otus_Homework/test/$TRAVIS_BUILD_NUMBER/hw1-0.1.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+    - curl -T hw1-0.1.$TRAVIS_BUILD_NUMBER-Linux.deb -uolegworld:$BINTRAY_API_KEY "https://api.bintray.com/content/olegworld/Otus_Homework/test/$TRAVIS_BUILD_NUMBER/hw1-0.1.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
